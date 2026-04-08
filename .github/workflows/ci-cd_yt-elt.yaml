@@ -34,7 +34,7 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_PASSWORD }}
             - name: Build and push Docker image
               if: steps.changed-files-build.outputs.any_changed == 'true'
-              run:
+              run: |
                 docker buildx build --push \
                  --tag ${{ vars.DOCKERHUB_NAMESPACE }}/${{ vars.DOCKERHUB_REPOSITORY }}:latest \
                  --tag ${{ vars.DOCKERHUB_NAMESPACE }}/${{ vars.DOCKERHUB_REPOSITORY }}:${{ github.sha }} \
@@ -87,7 +87,7 @@ jobs:
               run: docker exec -t airflow-worker sh -c "pytest tests/ -v"
             - name: Run End-to_end DAG Tests
               if: steps.changed-files-tests.outputs.any_changed == 'true'
-              run:
+              run: |
                 DAG_NAMES=("produce_json" "update_json" "data_quality")
                 for DAG in "${DAG_NAMES[@]}"; do
                     docker exec -t airflow-worker sh -c "airflow dags test $DAG"
