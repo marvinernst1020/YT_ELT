@@ -20,7 +20,7 @@ jobs:
               id: changed-files-build
               uses: tj-actions/changed-files@v45
               with:
-                files:
+                files: |
                     Dockerfile
                     requirements.txt
             - name: Set up Docker Buildx
@@ -75,7 +75,7 @@ jobs:
               id: changed-files-tests
               uses: tj-actions/changed-files@v45
               with:
-                files:
+                files: |
                     dags/**
                     include/**
                     docker-compose.yaml
@@ -88,7 +88,7 @@ jobs:
             - name: Run End-to_end DAG Tests
               if: steps.changed-files-tests.outputs.any_changed == 'true'
               run:
-                DAGS_NAMES=("produce_json" "update_json" "data_quality")
+                DAG_NAMES=("produce_json" "update_json" "data_quality")
                 for DAG in "${DAG_NAMES[@]}"; do
                     docker exec -t airflow-worker sh -c "airflow dags test $DAG"
                 done
