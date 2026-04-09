@@ -14,4 +14,5 @@ def yt_elt_data_quality(schema):
         )
         return task
     except Exception as e:
-        logger.error(f"Error running data quality checks for schema: {schema}")
+        logger.error(f"Error running data quality checks for schema {schema}: {e}")
+        raise
