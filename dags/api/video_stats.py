@@ -10,7 +10,7 @@ from datetime import date
 from airflow.decorators import task
 from airflow.models import Variable
 
-#this is when we do not use docker and airflow:
+# this is when we do not use docker and airflow:
 #API_KEY = os.getenv("API_KEY")
 #CHANNEL_HANDLE = 'MrBeast'
 
