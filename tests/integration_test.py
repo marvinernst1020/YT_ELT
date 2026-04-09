@@ -10,6 +10,11 @@ def test_youtube_api_response(airflow_variable):
 
     try:
         response = requests.get(url)
+        print("API_KEY present:", api_key is not None)
+        print("CHANNEL_HANDLE:", channel_handle)
+        print("URL:", url)
+        print("Response status:", response.status_code)
+        print("Response body:", response.text)
         assert response.status_code == 200
     except requests.RequestException as e:
         pytest.fail(f"Request to YouTube API failed: {e}")
