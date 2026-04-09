@@ -94,22 +94,6 @@ http://localhost:8080
 | Testing | pytest, Soda Core |
 | CI/CD | GitHub Actions |
 
-## Repository Structure
-
-```text
-.
-├── dags/                    # Airflow DAG definitions
-├── include/                 # Supporting Python modules and Soda config/checks
-├── docker/                  # Docker-related helper files
-├── tests/                   # Unit and integration tests
-├── data/                    # Generated files such as JSON outputs
-├── logs/                    # Airflow logs
-├── plugins/                 # Optional Airflow plugins
-├── config/                  # Airflow configuration
-├── docker-compose.yaml      # Local multi-container setup
-├── Dockerfile               # Custom Airflow image
-└── requirements.txt         # Python dependencies
-```
 
 ## Local Setup
 
